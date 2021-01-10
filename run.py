@@ -73,3 +73,13 @@ words_df.columns = ['Word', 'Frequency']
 
 # Assigning preProcessed text to the main data frame
 df.text = texts_lr_lc_np_ns
+
+# Sentiment analysis
+sid = SentimentIntensityAnalyzer()
+ps = lambda x: sid.polarity_scores(x)
+sentiment_scores = df.text.apply(ps)
+sentiment_df = pd.DataFrame(data = list(sentiment_scores))
+
+# Labeling the scores based on the compound polarity value
+labelize = lambda x: 'neutral' if x == 0 else('positive' if x > 0 else 'negative')
+sentiment_df['label'] = sentiment_df.compound.apply(labelize)
