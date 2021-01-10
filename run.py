@@ -39,3 +39,5 @@ df.user_name = df.user_name.cat.codes # Assigns unique numerrical value for each
 
 df.date = pd.to_datetime(df.date).dt.date
 # df.head()
+
+texts = df['text']
