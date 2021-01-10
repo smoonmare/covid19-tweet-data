@@ -25,7 +25,7 @@ import plotly.express as px
 sns.set(style='darkgrid')
 
 df = pd.read_csv('https://raw.githubusercontent.com/gabrielpreda/covid-19-tweets/master/covid19_tweets.csv') # df - data frame
-# df.head() # Show dataframe
+# df.head() # Show first 5 rows of dataframe
 # df.shape # Shape of the dataframe
 
 needed_columns = ['user_name','date','text']
