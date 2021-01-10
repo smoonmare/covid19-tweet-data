@@ -40,4 +40,17 @@ df.user_name = df.user_name.cat.codes # Assigns unique numerrical value for each
 df.date = pd.to_datetime(df.date).dt.date
 # df.head()
 
+# Tweet's texts
 texts = df['text']
+
+# Removing URLs from text
+remove_url = lambda x: re.sub(r'https\S+', '', str(x))
+texts_lr = texts.apply(remove_url)
+
+# Converting tweets to lowercase
+to_lower = lambda x: x.lower()
+texts_lr_lc = texts_lr.apply(to_lower)
+
+# Removing punctuations
+remove_puncs = lambda x: x.translate(str.maketrans('', '', string.punctuation))
+texts_lr_lc_np = texts_lr_lc.apply(remove_puncs)
