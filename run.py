@@ -25,4 +25,17 @@ import plotly.express as px
 sns.set(style='darkgrid')
 
 df = pd.read_csv('https://raw.githubusercontent.com/gabrielpreda/covid-19-tweets/master/covid19_tweets.csv')
-df.head()
+# df.head()
+# Shape of the dataframe
+# df.shape
+
+needed_columns = ['user_name','date','text']
+df = df[needed_columns]
+# df.shape()
+
+# Changing category of the column
+df.user_name = df.user_name.astype('category')
+df.user_name = df.user_name.cat.codes # Assigns unique numerrical value for each unique user name
+
+df.date = pd.to_datetime(df.date).dt.date
+# df.head()
